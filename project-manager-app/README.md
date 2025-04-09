@@ -53,3 +53,72 @@ Follow these steps to set up the project locally:
 ```bash
 git clone https://github.com/your-username/project-manager.git
 cd project-manager
+```
+### 2. Install Dependencies
+
+Using npm:
+```bash
+npm install
+```
+Or Using Yarn:
+```bash
+yarn install
+```
+### 3. Set Up Environment Variables
+1. Rename the ```bash .env.example ``` file to ```bash .env ```
+2. Open the ```.env ``` file and configure the following variables:
+```env
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+``` 
+- ```DATABASE URL```: Your PostgreSQL connection string. Replace ```USER```,```PASSWORD```,```HOST```,```PORT```, and 
+```DATABASE``` with your PostgreSQL credentials.
+- ```NEXTAUTH_URL```: The base URL of your application.
+- ```NEXTAUTH_SECRET```: A secret key for NextAuth.js. You can generate one using the command:
+```bash
+openssl rand -base64 32
+```
+### 4. Set Up the Database
+Ensure your PostgreSQL server is running. If you haven't created a database for this project, do so now.
+
+### 5. Run Database Migrations
+Use Prisma to set up the database schema:
+```bash
+npx prisma migrate dev --name init
+```
+This command will apply the migrations and set up the necessary tables in your database.
+### 6. Start the Development Server
+Launch the development server:
+Using npm:
+```bash
+npm run dev
+```
+Or using Yarn:
+```bash
+yarn dev
+```
+Open your browser and navigate to ```http://localhost:3000``` to see the application in action.
+
+## Available Scripts
+- ```dev```: Starts the development server.
+- ```build```: Builds the application for production.
+- ```start```: Starts the production server.
+- ```prisma:migrate```: Runs database migrations using Prisma.
+
+## Deployment
+
+To deploy the application: 
+1. Environment Variables: Ensure all necessary environment variables are set in your hosting environment.
+2. Database: Ensure the production database is set up and accessible 
+3. **Build the Application**:
+```bash
+npm run start
+```
+For cloud deployments, consider platforms like [Vercel](https://vercel.com/new) or [Netlify](https://www.netlify.com/).
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+
+## License
+This project is licensed under the MIT License.
